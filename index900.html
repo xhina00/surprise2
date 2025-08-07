@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(to bottom right, #e6ffe6, #ccffcc);
+            color: #2e4d2e;
+            margin: 0;
+            padding: 0;
+        }
+        .page {
+            display: none;
+            padding: 2rem;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+        .page.active {
+            display: block;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        p {
+            font-size: 1.25rem;
+            margin: 1rem 0;
+        }
+        button {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            background-color: #81c784;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: #388e3c;
+        }
+        img {
+            max-width: 90%;
+            border-radius: 12px;
+            margin-top: 1rem;
+        }
+        .collage img {
+            width: 45%;
+            margin: 0.5rem;
+            display: inline-block;
+        }
+        .caption {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <div class="page active" id="page1">
+        <h1>hey there</h1>
+        <p>finally, I’m kinda nervous but here is a little surprise.</p>
+        <button onclick="nextPage()">next</button>
+    </div>
+
+    <div class="page" id="page2">
+        <p>I remember when we first talked, I never expected it would happen and it was kinda funny but I don’t regret answering that text.</p>
+        <button onclick="nextPage()">next</button>
+    </div>
+
+    <div class="page" id="page3">
+        <p>We started to know each other and have long conversations, sometimes more deep or serious stuff or just messing around, but I enjoyed every single one. It was fun to get to know such an incredible person.</p>
+        <img src="childhood.jpeg" alt="Childhood Photo">
+        <p class="caption">(love that photo btw 😂)</p>
+        <button onclick="nextPage()">next</button>
+    </div>
+
+    <div class="page" id="page4">
+        <div class="collage">
+            <div>
+                <img src="cat-drawing.jpeg"><p class="caption">fat cat 🙊</p>
+            </div>
+            <div>
+                <img src="flower.jpeg"><p class="caption">lovely flowers</p>
+            </div>
+            <div>
+                <img src="spidey1.jpeg"><img src="spidey2.jpeg"><p class="caption">we are spidermans</p>
+            </div>
+            <div>
+                <img src="eye.jpeg"><p class="caption">👁️</p>
+            </div>
+        </div>
+        <button onclick="nextPage()">next</button>
+    </div>
+
+    <div class="page" id="page5">
+        <p>Also I wanted to thank you for everything. For every laugh, for the nights playing, for every text, for being there, for every nice thing you did that made my day even when you didn’t even notice it. You really are amazing and deserve the world.</p>
+        <button onclick="nextPage()">next</button>
+    </div>
+
+    <div class="page" id="page6">
+        <p>I won’t lie I’m kinda nervous (really) but as someone once said if you don’t try you will never know what happens. So even if I’m not sure about what’s gonna happen I’ll take the risk 🙊</p>
+        <p>Hope you are willing to give it a chance.</p>
+        <button onclick="nextPage()">next</button>
+    </div>
+
+    <div class="page" id="page7">
+        <h1>Can I be your girlfriend?</h1>
+        <button onclick="accept()">Yes</button>
+        <button onclick="decline()">No</button>
+    </div>
+
+    <div class="page" id="yesPage">
+        <img src="bouquet.jpeg" alt="Bouquet">
+        <img src="note.jpeg" alt="Note">
+    </div>
+
+    <div class="page" id="noPage">
+        <p>Are you sure?</p>
+        <button onclick="accept()">Yes</button>
+        <button onclick="keepAsking(1)">No</button>
+    </div>
+
+    <div class="page" id="loopPage"></div>
+
+    <script>
+        let currentPage = 1;
+        function nextPage() {
+            document.getElementById('page' + currentPage).classList.remove('active');
+            currentPage++;
+            document.getElementById('page' + currentPage).classList.add('active');
+        }
+
+        function accept() {
+            hideAll();
+            document.getElementById('yesPage').classList.add('active');
+        }
+
+        function decline() {
+            hideAll();
+            document.getElementById('noPage').classList.add('active');
+        }
+
+        function keepAsking(attempt) {
+            hideAll();
+            const page = document.getElementById('loopPage');
+            page.innerHTML = `
+                <p>${attempt < 3 ? 'Are you really sure?' : attempt < 5 ? 'Last decision?' : 'I’ll keep trying until you say yes 💚'}</p>
+                <button onclick="accept()">Yes</button>
+                <button onclick="keepAsking(${attempt + 1})">No</button>
+            `;
+            page.classList.add('active');
+        }
+
+        function hideAll() {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        }
+    </script>
+</body>
+</html>
