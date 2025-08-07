@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Something Special 💚</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="page" id="page1">
+    <h1>hey there</h1>
+    <p>finally, I’m kinda nervous but here is a little surprise.</p>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="page hidden" id="page2">
+    <p>I remember when we first talked, I never expected it would happen and it was kinda funny but I don’t regret answering that text.</p>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="page hidden" id="page3">
+    <p>We started to know each other and have long conversations, sometimes more deep or serious stuff or just messing around, but I enjoyed every single one. It was fun to get to know such an incredible person.</p>
+    <img src="childhood.jpeg" alt="Us" />
+    <p class="caption">[love that photo btw 😂]</p>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="page hidden" id="page4">
+    <div class="collage">
+      <div><img src="cat-drawing.jpeg"/><p>fat cat 🙊</p></div>
+      <div><img src="flower.jpeg"/><p>lovely flowers</p></div>
+      <div><img src="spidey1.jpeg"/><img src="spidey2.jpeg"/><p>we are spidermans</p></div>
+      <div><img src="eye.jpeg"/><p>👁</p></div>
+    </div>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="page hidden" id="page5">
+    <p>Also I wanted to thank you for everything. For every laugh, for the nights playing, for every text, for being there, for every nice thing you did that made my day even when you didn’t even notice it. You really are amazing and deserve the world.</p>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="page hidden" id="page6">
+    <p>I won’t lie I’m kinda nervous (really) but as someone once said if you don’t try you will never know what happens. So even if I’m not sure about what’s gonna happen I’ll take the risk 🙊</p>
+    <p>Hope you are willing to give it a chance.</p>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="page hidden" id="page7">
+    <h1>Can I be your girlfriend?</h1>
+    <button onclick="yes()">Yes</button>
+    <button onclick="no()">No</button>
+  </div>
+
+  <div class="page hidden" id="yesPage">
+    <img src="bouquet.jpeg" alt="Flowers" />
+    <img src="note.jpeg" alt="Note" />
+  </div>
+
+  <div class="page hidden" id="noPage">
+    <p>Are you sure?</p>
+    <button onclick="yes()">Yes</button>
+    <button onclick="tryAgain()">No</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
